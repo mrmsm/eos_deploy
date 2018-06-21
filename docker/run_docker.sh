@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DOCKER_HUB="mrmsm/eos_docker"
+_sudo=""
 
 echo_f ()
 {
@@ -27,10 +28,8 @@ echo_ret_exit () {
   [ $2 -eq 0 ] && echo_s || echo_fx
 }
 
-if [ $(id -u) -eq 0 ]; then
-  _sudo=""
-else
-  _sudo="sudo "
+if [ $(id -u) -ne 0 ]; then
+  [ $(echo $OSTYPE | grep linux| wc -l) -eq 1 ] &&  _sudo="sudo "
 fi
 
 # Check Docker installed
