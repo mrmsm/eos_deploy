@@ -44,7 +44,7 @@ if [ $? -eq 1 ]; then
   case "$OSTYPE" in
    darwin*)
         echo "## Run to this ##"
-        echo " >> curl -o jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64"
+        echo " >> curl -L -o jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64"
         echo " >> chmod +x jq; sudo mv jq /usr/local/bin/jq"
         exit 1
         ;;
