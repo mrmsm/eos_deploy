@@ -1,6 +1,7 @@
 #!/bin/bash
 
-DOCKER_HUB="mrmsm/eos_docker"
+DOCKER_HUB="eosio/eos"
+#DOCKER_HUB="mrmsm/eos_docker"
 _sudo=""
 
 echo_f ()
@@ -95,6 +96,12 @@ _net_flag=${_net_flag:-"Y"}
      fi
    done
 #fi
+
+if [ $($_sudo docker ps -a | grep $_nodename | wc -l ) -ne 0 ]; then
+  echo "$_nodename docker container is running now."
+  $_sudo docker ps -a | grep $_nodename
+  exit 1
+fi
 
 while true; do
   _default_path="$(pwd)/$_nodename"
