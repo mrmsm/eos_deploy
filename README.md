@@ -14,3 +14,7 @@ The nodeos environment is a deployment script created to make it easy for anyone
 2. cd eos_deploy
 3. chmod +x run_docker.sh
 4. ./run_docker.sh
+5. If the node is fully synchronized, stop and remove the docker container and restart run_docker.sh.
+   If the docker container is not deleted and restarted, it will attempt to recover to Snapshot during the restart process.
+  ./run_docker.sh remove; ./run_docker.sh start
+
