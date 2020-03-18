@@ -14,8 +14,8 @@ _sub_cmd=$(echo $1 | tr '[:upper:]' '[:lower:]')
 
 snapshot_recovery() {
     mkdir -p ${data_dir}/data/snapshots/
-    #sudo wget $snapshot_url -O snapshot-latest.tar.gz
-    #tar xvfz ${data_dir}/snapshot-latest.tar.gz --directory=${data_dir}/data/snapshots/
+    sudo wget $snapshot_url -O snapshot-latest.tar.gz
+    tar xvfz ${data_dir}/snapshot-latest.tar.gz --directory=${data_dir}/data/snapshots/
     _snapshot=$(basename $(ls -t ${data_dir}/data/snapshots/snapshot*.bin | head -n 1))
     if [ -f ${data_dir}/data/snapshots/$_snapshot ]; then
       rm -f ${data_dir}/data/state/*
