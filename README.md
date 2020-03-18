@@ -2,7 +2,7 @@
 EOS Deployment Tool
 
 # About
-Created to easily distribute nodeos.
+Script created to easily deploy nodeos
 
 # Requirements
 - wget
