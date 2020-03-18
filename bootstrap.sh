@@ -103,7 +103,7 @@ cp -a $basedir/template/$setup_chain/genesis.json $_prefix/config/
 sed -e "s/__DOCKER_RELEASE__/$docker_image_tag/g" -e "s#__SNAPSHOT_URL__#$snapshot_url#g" -e "s/__PRODUCER_NAME__/$_nodename/g" -e "s#__PREFIX__#$_prefix#g" < $basedir/template/docker_run.sh > $_prefix/docker_run.sh
 
 sed -e "s/__PRODUCER_NAME__/$_nodename/g" <  $basedir/template/cleos.sh > $_prefix/cleos.sh
-sed -e "s/__HTTP_PORT__/$_nodename/g" <  $basedir/template/sync_check.sh > $_prefix/sync_check.sh
+sed -e "s/__HTTP_PORT__/$_http_port/g" <  $basedir/template/sync_check.sh > $_prefix/sync_check.sh
 
 cp -a $basedir/template/run.sh $_prefix/run.sh
 
@@ -111,3 +111,14 @@ chmod 0700 $_prefix/run.sh
 chmod 0700 $_prefix/docker_run.sh
 chmod 0700 $_prefix/cleos.sh
 chmod 0700 $_prefix/sync_check.sh
+
+echo "################ Bootstrap finish ##################"
+echo " > Next step"
+echo "####################################################"
+echo " cd $_prefix"
+echo " ./docker_run.sh snapshot_recovery"
+echo " # ... 5 min after..."
+echo " ./sync_check.sh"
+echo "####################################################"
+echo " If the node is fully synchronized, stop and remove the docker container and restart run_docker.sh. If the docker container is not deleted and restarted, it will attempt to recover to Snapshot during the restart process."
+
