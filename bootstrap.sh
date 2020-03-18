@@ -92,8 +92,6 @@ PRIV_KEY=$(cat $_nodename.bpkey | grep "Private" | awk '{print $3}')
 echo "############# Node Public/Private key ##############"
 cat $_nodename.bpkey
 rm -f $_nodename.bpkey
-echo "####################################################"
-
 if [ ! -f $basedir/template/$setup_chain/config.ini ] ; then
   echo "ERROR : Config.ini template file is not exists."
   echo "Check : $basedir/template/$setup_chain/config.ini"
@@ -122,7 +120,8 @@ echo " cd $_prefix"
 echo " ./docker_run.sh snapshot_recovery"
 echo " # ... 5 min after..."
 echo " ./sync_check.sh"
-echo "####################################################"
+echo
+echo
 echo " >> If the node is fully synchronized, stop and remove the docker container and restart run_docker.sh."
 echo " >> If the docker container is not deleted and restarted, it will attempt to recover to Snapshot during the restart process."
 echo "####################################################"
