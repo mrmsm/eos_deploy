@@ -88,8 +88,11 @@ _p2p_port=${_p2p_port:-"9876"}
 docker run --rm -it --name eos_key_gen mrmsm/eos_docker:$docker_image_tag cleos create key --to-console  >$_nodename.bpkey
 PUB_KEY=$(cat $_nodename.bpkey | grep "Public" | awk '{print $3}')
 PRIV_KEY=$(cat $_nodename.bpkey | grep "Private" | awk '{print $3}')
+
+echo "############# Node Public/Private key ##############"
 cat $_nodename.bpkey
 rm -f $_nodename.bpkey
+echo "####################################################"
 
 if [ ! -f $basedir/template/$setup_chain/config.ini ] ; then
   echo "ERROR : Config.ini template file is not exists."
@@ -120,5 +123,6 @@ echo " ./docker_run.sh snapshot_recovery"
 echo " # ... 5 min after..."
 echo " ./sync_check.sh"
 echo "####################################################"
-echo " If the node is fully synchronized, stop and remove the docker container and restart run_docker.sh. If the docker container is not deleted and restarted, it will attempt to recover to Snapshot during the restart process."
-
+echo " >> If the node is fully synchronized, stop and remove the docker container and restart run_docker.sh."
+echo " >> If the docker container is not deleted and restarted, it will attempt to recover to Snapshot during the restart process."
+echo "####################################################"
