@@ -2,7 +2,7 @@
 EOS Deployment Tool
 
 # About
-The nodeos environment is a deployment script created to make it easy for anyone to configure.
+Created to easily distribute nodeos.
 
 # Requirements
 - wget
